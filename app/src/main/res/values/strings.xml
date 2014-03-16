@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TreeniApp</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="musclegroup_text_view">Lihasryhmä</string>
+    <string name="musclegroup_prompt">Valitse lihasryhmä</string>
+
+    <string name="show_all_button_view">Näytä kaikki</string>
+    <string name="random_button_view">Arvo liike</string>
+
+    <string-array name="musclegroup_array">
+        <item>Rintalihakset</item>
+        <item>Olkapäät</item>
+        <item>Hauikset</item>
+        <item>Ojentajat</item>
+        <item>Selkä</item>
+        <item>Jalat</item>
+    </string-array>
+
+</resources>
