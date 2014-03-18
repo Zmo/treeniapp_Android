@@ -1,7 +1,6 @@
 package com.zmo.treeniapp;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,48 +8,79 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    private final static String SELECTED_MUSCLE_GROUP = "Rintalihakset";
+
     private String selectedMuscleGroup;
 
-    private Spinner spinner;
+    private Spinner muscleGroupSpinner;
+
+    private Button showAllButton;
+    private Button randomButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //addItemsOnSpinner();
-        addListenerOnSpinnerItemSelection();
+        if (savedInstanceState == null) { // if the app is starting for the first time
 
-        /*if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(android.R.id.container, new PlaceholderFragment())
-                    .commit();
-        }*/
+            selectedMuscleGroup = "Rintalihakset";
+
+        } else {
+
+            selectedMuscleGroup = SELECTED_MUSCLE_GROUP;
+        }
+        // assign values to the variables
+        muscleGroupSpinner = (Spinner) findViewById(R.id.muscleGroupSpinner);
+
+        showAllButton = (Button) findViewById(R.id.showAllButton);
+        randomButton = (Button) findViewById(R.id.randomMoveButton);
+
+        // call methods to add listeners
+        addItemSelectedListenerToSpinner();
+        addButtonListeners();
     }
 
-    // add items to spinner
-    /*public void addItemsOnSpinner() {
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
-        List<String> list = new ArrayList<String>();
-        list.add("list 1");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(dataAdapter);
-    }*/
+    private void addButtonListeners() {
+        showAllButton.setOnClickListener(new Button.OnClickListener(){
 
-    public void addListenerOnSpinnerItemSelection() {
-        spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        randomButton.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    private void addItemSelectedListenerToSpinner() {
+        muscleGroupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
     @Override
