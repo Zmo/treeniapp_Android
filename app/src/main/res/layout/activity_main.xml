@@ -19,17 +19,8 @@
         android:entries="@array/musclegroup_array"
         android:layout_below="@+id/musclegroupTextView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/show_all_button_view"
-        android:id="@+id/showAllButton"
-        android:layout_marginLeft="31dp"
-        android:layout_below="@+id/muscleGroupSpinner"
-        android:layout_alignLeft="@+id/musclegroupTextView"
-        android:layout_alignStart="@+id/musclegroupTextView" />
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/randomMoveButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,8 +28,16 @@
         android:text="@string/random_button_view"
         android:id="@+id/randomMoveButton"
         android:layout_gravity="right"
-        android:layout_below="@+id/muscleGroupSpinner"
-        android:layout_toRightOf="@+id/showAllButton"
-        android:layout_marginLeft="55dp" />
+        android:layout_alignTop="@+id/musclegroupTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/exerciseExpandableListView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/muscleGroupSpinner" />
 
 </RelativeLayout>

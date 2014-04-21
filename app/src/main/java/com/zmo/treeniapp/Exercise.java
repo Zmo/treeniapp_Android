@@ -8,6 +8,7 @@ public class Exercise {
     private String name;
     private int normalSetWeight;
     private int heavySetWeight;
+    private int twoXSixWeight;
     private int oneRepMax;
 
     public Exercise(String name) {
@@ -15,6 +16,11 @@ public class Exercise {
         setNormalSetWeight(0);
         setHeavySetWeight(0);
         setOneRepMax(0);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public String getName() {
@@ -47,5 +53,13 @@ public class Exercise {
 
     public void setOneRepMax(int oneRepMax) {
         this.oneRepMax = oneRepMax;
+    }
+
+    public int getTwoXSixWeight() {
+        return twoXSixWeight;
+    }
+
+    public void setTwoXSixWeight(int twoXSixWeight) {
+        this.twoXSixWeight = twoXSixWeight;
     }
 }

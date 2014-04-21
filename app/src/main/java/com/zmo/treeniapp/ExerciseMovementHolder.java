@@ -1,6 +1,7 @@
 package com.zmo.treeniapp;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,111 +9,187 @@ import java.util.Random;
  */
 public class ExerciseMovementHolder {
 
-    private HashMap<Integer, Exercise> chestExercises = new HashMap<Integer, Exercise>();
-    private HashMap<Integer, Exercise> legExercises = new HashMap<Integer, Exercise>();
-    private HashMap<Integer, Exercise> shoulderExercises = new HashMap<Integer, Exercise>();
-    private HashMap<Integer, Exercise> tricepExercises = new HashMap<Integer, Exercise>();
-    private HashMap<Integer, Exercise> bicepExercises = new HashMap<Integer, Exercise>();
-    private HashMap<Integer, Exercise> backExercises = new HashMap<Integer, Exercise>();
-    private HashMap<Integer, Exercise> abExercises = new HashMap<Integer, Exercise>();
+    private ArrayList<Exercise> chestExercises;
+    private ArrayList<Exercise> legExercises;
+    private ArrayList<Exercise> shoulderExercises;
+    private ArrayList<Exercise> tricepExercises;
+    private ArrayList<Exercise> bicepExercises;
+    private ArrayList<Exercise> backExercises;
+    private ArrayList<Exercise> abExercises;
+    private ArrayList<Exercise> allExercises;
 
-    Random r;
+    private Random r;
 
     public ExerciseMovementHolder() {
-        chestExercises.put(1, new Exercise("Penkki"));
-        chestExercises.put(2, new Exercise("Penkki käsipainoilla"));
-        chestExercises.put(3, new Exercise("Vinopenkki"));
-        chestExercises.put(4, new Exercise("Vinopenkki käsipainoilla"));
 
-        legExercises.put(1, new Exercise("Mave"));
-        legExercises.put(2, new Exercise("Kyykky"));
-        legExercises.put(3, new Exercise("Pohjelaite (istualteen)"));
-        legExercises.put(4, new Exercise("Pohjelaite (seisaaltaan)"));
-        legExercises.put(5, new Exercise("Takajalkalaite"));
+        setChestExercises(new ArrayList<Exercise>());
+        getChestExercises().add(new Exercise("Penkki"));
+        getChestExercises().add(new Exercise("Penkki käsipainoilla"));
+        getChestExercises().add(new Exercise("Vinopenkki"));
+        getChestExercises().add(new Exercise("Vinopenkki käsipainoilla"));
 
-        shoulderExercises.put(1, new Exercise("Pystypunnerrus tangolla"));
-        shoulderExercises.put(2, new Exercise("Pystypunnerrus käsipainoilla"));
-        shoulderExercises.put(3, new Exercise("Olankohautus"));
-        shoulderExercises.put(4, new Exercise("Vipunosto sivulle"));
+        setLegExercises(new ArrayList<Exercise>());
+        getLegExercises().add(new Exercise("Mave"));
+        getLegExercises().add(new Exercise("Kyykky"));
+        getLegExercises().add(new Exercise("Pohjelaite (istualteen)"));
+        getLegExercises().add(new Exercise("Pohjelaite (seisaaltaan)"));
+        getLegExercises().add(new Exercise("Takajalkalaite"));
 
-        tricepExercises.put(1, new Exercise("Dipit"));
-        tricepExercises.put(2, new Exercise("Ranskalainen punnerrus"));
-        tricepExercises.put(3, new Exercise("Penkki kapealla otteella"));
-        tricepExercises.put(4, new Exercise("Taljassa narulla"));
+        setShoulderExercises(new ArrayList<Exercise>());
+        getShoulderExercises().add(new Exercise("Pystypunnerrus tangolla"));
+        getShoulderExercises().add(new Exercise("Pystypunnerrus käsipainoilla"));
+        getShoulderExercises().add(new Exercise("Olankohautus"));
+        getShoulderExercises().add(new Exercise("Vipunosto sivulle"));
 
-        bicepExercises.put(1, new Exercise("Hauiskääntö tangolla"));
-        bicepExercises.put(2, new Exercise("Vasarakäännöt käsipainoilla"));
-        bicepExercises.put(3, new Exercise("21:t tangolla"));
-        bicepExercises.put(4, new Exercise("Taljassa narulla"));
+        setTricepExercises(new ArrayList<Exercise>());
+        getTricepExercises().add(new Exercise("Dipit"));
+        getTricepExercises().add(new Exercise("Ranskalainen punnerrus"));
+        getTricepExercises().add(new Exercise("Penkki kapealla otteella"));
+        getTricepExercises().add(new Exercise("Taljassa narulla"));
 
-        backExercises.put(1, new Exercise("Soutu tangolla"));
-        backExercises.put(2, new Exercise("Soutu käsipainolla"));
-        backExercises.put(3, new Exercise("Leuanveto myötäotteella"));
-        backExercises.put(4, new Exercise("Ylätalja"));
-        backExercises.put(5, new Exercise("Alatalja"));
+        setBicepExercises(new ArrayList<Exercise>());
+        getBicepExercises().add(new Exercise("Hauiskääntö tangolla"));
+        getBicepExercises().add(new Exercise("Vasarakäännöt käsipainoilla"));
+        getBicepExercises().add(new Exercise("21:t tangolla"));
+        getBicepExercises().add(new Exercise("Taljassa narulla"));
 
-        abExercises.put(1, new Exercise("Dragon flag"));
-        abExercises.put(2, new Exercise("Windshield wipers"));
-        abExercises.put(3, new Exercise("Pyöräilijä"));
-        abExercises.put(4, new Exercise("Voimapyörä"));
+        setBackExercises(new ArrayList<Exercise>());
+        getBackExercises().add(new Exercise("Soutu tangolla"));
+        getBackExercises().add(new Exercise("Soutu käsipainolla"));
+        getBackExercises().add(new Exercise("Leuanveto myötäotteella"));
+        getBackExercises().add(new Exercise("Ylätalja"));
+        getBackExercises().add(new Exercise("Alatalja"));
+
+        setAbExercises(new ArrayList<Exercise>());
+        getAbExercises().add(new Exercise("Dragon flag"));
+        getAbExercises().add(new Exercise("Windshield wipers"));
+        getAbExercises().add(new Exercise("Pyöräilijä"));
+        getAbExercises().add(new Exercise("Voimapyörä"));
+
+        setAllExercises(new ArrayList<Exercise>());
+        getAllExercises().addAll(chestExercises);
+        getAllExercises().addAll(legExercises);
+        getAllExercises().addAll(shoulderExercises);
+        getAllExercises().addAll(tricepExercises);
+        getAllExercises().addAll(bicepExercises);
+        getAllExercises().addAll(backExercises);
+        getAllExercises().addAll(abExercises);
 
         r = new Random();
-    }
 
+        /*
+        getTricepExercises().put("Dipit", new Exercise("Dipit"));
+        getTricepExercises().put("Ranskalainen punnerrus", new Exercise("Ranskalainen punnerrus"));
+        getTricepExercises().put("Penkki kapealla otteella", new Exercise("Penkki kapealla otteella"));
+        getTricepExercises().put("Taljassa narulla", new Exercise("Taljassa narulla"));
 
-    public HashMap<Integer, Exercise> getChestExercises() {
-        return chestExercises;
+        getBicepExercises().put("Hauiskääntö tangolla", new Exercise("Hauiskääntö tangolla"));
+        getBicepExercises().put("Vasarakäännöt käsipainoilla", new Exercise("Vasarakäännöt käsipainoilla"));
+        getBicepExercises().put("21:t tangolla", new Exercise("21:t tangolla"));
+        getBicepExercises().put("Taljassa narulla", new Exercise("Taljassa narulla"));
+
+        getBackExercises().put("Soutu tangolla", new Exercise("Soutu tangolla"));
+        getBackExercises().put("Soutu käsipainolla", new Exercise("Soutu käsipainolla"));
+        getBackExercises().put("Leuanveto myötäotteella", new Exercise("Leuanveto myötäotteella"));
+        getBackExercises().put("Ylätalja", new Exercise("Ylätalja"));
+        getBackExercises().put("Alatalja", new Exercise("Alatalja"));
+
+        getAbExercises().put("Dragon flag", new Exercise("Dragon flag"));
+        getAbExercises().put("Windshield wipers", new Exercise("Windshield wipers"));
+        getAbExercises().put("Pyöräilijä", new Exercise("Pyöräilijä"));
+        getAbExercises().put("Voimapyörä", new Exercise("Voimapyörä"));
+*/
     }
 
     public Exercise getRandomChestExercise() {
-        return chestExercises.get(r.nextInt());
-    }
-
-    public HashMap<Integer, Exercise> getLegExercises() {
-        return legExercises;
+        return getChestExercises().get(r.nextInt(chestExercises.size()));
     }
 
     public Exercise getRandomLegExercise() {
-        return legExercises.get(r.nextInt());
-    }
-
-    public HashMap<Integer, Exercise> getShoulderExercises() {
-        return shoulderExercises;
+        return getLegExercises().get(r.nextInt(legExercises.size()));
     }
 
     public Exercise getRandomShoulderExercise() {
-        return shoulderExercises.get(r.nextInt());
-    }
-
-    public HashMap<Integer, Exercise> getTricepExercises() {
-        return tricepExercises;
+        return getShoulderExercises().get(r.nextInt(shoulderExercises.size()));
     }
 
     public Exercise getRandomTricepExercise() {
-        return tricepExercises.get(r.nextInt());
-    }
-
-    public HashMap<Integer, Exercise> getBicepExercises() {
-        return bicepExercises;
+        return getTricepExercises().get(r.nextInt(tricepExercises.size()));
     }
 
     public Exercise getRandomBicepExercise() {
-        return bicepExercises.get(r.nextInt());
-    }
-
-    public HashMap<Integer, Exercise> getBackExercises() {
-        return backExercises;
+        return getBicepExercises().get(r.nextInt(bicepExercises.size()));
     }
 
     public Exercise getRandomBackExercise() {
-        return backExercises.get(r.nextInt());
-    }
-
-    public HashMap<Integer, Exercise> getAbExercises() {
-        return abExercises;
+        return getBackExercises().get(r.nextInt(backExercises.size()));
     }
 
     public Exercise getRandomAbExercise() {
-        return abExercises.get(r.nextInt());
+        return getAbExercises().get(r.nextInt(abExercises.size()));
+    }
+
+    public ArrayList<Exercise> getChestExercises() {
+        return chestExercises;
+    }
+
+    public void setChestExercises(ArrayList<Exercise> chestExercises) {
+        this.chestExercises = chestExercises;
+    }
+
+    public ArrayList<Exercise> getLegExercises() {
+        return legExercises;
+    }
+
+    public void setLegExercises(ArrayList<Exercise> legExercises) {
+        this.legExercises = legExercises;
+    }
+
+    public ArrayList<Exercise> getShoulderExercises() {
+        return shoulderExercises;
+    }
+
+    public void setShoulderExercises(ArrayList<Exercise> shoulderExercises) {
+        this.shoulderExercises = shoulderExercises;
+    }
+
+    public ArrayList<Exercise> getTricepExercises() {
+        return tricepExercises;
+    }
+
+    public void setTricepExercises(ArrayList<Exercise> tricepExercises) {
+        this.tricepExercises = tricepExercises;
+    }
+
+    public ArrayList<Exercise> getBicepExercises() {
+        return bicepExercises;
+    }
+
+    public void setBicepExercises(ArrayList<Exercise> bicepExercises) {
+        this.bicepExercises = bicepExercises;
+    }
+
+    public ArrayList<Exercise> getBackExercises() {
+        return backExercises;
+    }
+
+    public void setBackExercises(ArrayList<Exercise> backExercises) {
+        this.backExercises = backExercises;
+    }
+
+    public ArrayList<Exercise> getAbExercises() {
+        return abExercises;
+    }
+
+    public void setAbExercises(ArrayList<Exercise> abExercises) {
+        this.abExercises = abExercises;
+    }
+
+    public ArrayList<Exercise> getAllExercises() {
+        return allExercises;
+    }
+
+    public void setAllExercises(ArrayList<Exercise> allExercises) {
+        this.allExercises = allExercises;
     }
 }

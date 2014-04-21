@@ -9,22 +9,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
     private final static String SELECTED_MUSCLE_GROUP = "Rintalihakset";
 
-    private String selectedMuscleGroup;
+    private ExerciseMovementHolder exerciseMovementHolder;
+
+    private ExpandableListAdapter expandableListAdapter;
 
     private Spinner muscleGroupSpinner;
-
-    private Button showAllButton;
     private Button randomButton;
+    private ExpandableListView expandableListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +35,18 @@ public class MainActivity extends ActionBarActivity {
 
         if (savedInstanceState == null) { // if the app is starting for the first time
 
-            selectedMuscleGroup = "Rintalihakset";
-
         } else {
 
-            selectedMuscleGroup = SELECTED_MUSCLE_GROUP;
         }
-        // assign values to the variables
+        // assign values to the view element variables
         muscleGroupSpinner = (Spinner) findViewById(R.id.muscleGroupSpinner);
-
-        showAllButton = (Button) findViewById(R.id.showAllButton);
         randomButton = (Button) findViewById(R.id.randomMoveButton);
+        expandableListView = (ExpandableListView) findViewById(R.id.exerciseExpandableListView);
+
+        // populate the listView
+        exerciseMovementHolder = new ExerciseMovementHolder();
+        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getAllExercises());
+        expandableListView.setAdapter(expandableListAdapter);
 
         // call methods to add listeners
         addItemSelectedListenerToSpinner();
@@ -51,14 +54,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void addButtonListeners() {
-        showAllButton.setOnClickListener(new Button.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
         randomButton.setOnClickListener(new Button.OnClickListener(){
 
             @Override
@@ -72,7 +67,32 @@ public class MainActivity extends ActionBarActivity {
         muscleGroupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-
+                //Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_SHORT).show();
+                Integer i = (int) (long) id;
+                switch (i) {
+                    case 0:
+                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getAllExercises());
+                        break;
+                    case 1:
+                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getChestExercises());
+                        break;
+                    case 2:
+                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getShoulderExercises());
+                        break;
+                    case 3:
+                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getBicepExercises());
+                        break;
+                    case 4:
+                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getTricepExercises());
+                        break;
+                    case 5:
+                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getBackExercises());
+                        break;
+                    case 6:
+                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getLegExercises());
+                        break;
+                }
+                expandableListView.setAdapter(expandableListAdapter);
             }
 
             @Override
