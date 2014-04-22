@@ -9,11 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -45,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
 
         // populate the listView
         exerciseMovementHolder = new ExerciseMovementHolder();
-        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getAllExercises());
+        expandableListAdapter = new ExpandableListAdapter(this, getApplicationContext(), exerciseMovementHolder.getAllExercises());
         expandableListView.setAdapter(expandableListAdapter);
 
         // call methods to add listeners
@@ -71,25 +69,25 @@ public class MainActivity extends ActionBarActivity {
                 Integer i = (int) (long) id;
                 switch (i) {
                     case 0:
-                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getAllExercises());
+                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getAllExercises());
                         break;
                     case 1:
-                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getChestExercises());
+                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getChestExercises());
                         break;
                     case 2:
-                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getShoulderExercises());
+                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getShoulderExercises());
                         break;
                     case 3:
-                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getBicepExercises());
+                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getBicepExercises());
                         break;
                     case 4:
-                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getTricepExercises());
+                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getTricepExercises());
                         break;
                     case 5:
-                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getBackExercises());
+                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getBackExercises());
                         break;
                     case 6:
-                        expandableListAdapter = new ExpandableListAdapter(getApplicationContext(), exerciseMovementHolder.getLegExercises());
+                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getLegExercises());
                         break;
                 }
                 expandableListView.setAdapter(expandableListAdapter);

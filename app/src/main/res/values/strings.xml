@@ -9,6 +9,8 @@
 
     <string name="random_button_view">Arvo liike</string>
 
+    <string name="prompt_label">Anna uusi paino:</string>
+
     <string-array name="musclegroup_array">
         <item>Kaikki</item>
         <item>Rintalihakset</item>
