@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/musclegroup_text_view"
+        android:id="@+id/musclegroupTextView"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp" />
+
+    <Spinner
+        android:id="@+id/muscleGroupSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/musclegroup_array"
+        android:layout_below="@+id/musclegroupTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/randomMoveButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/random_button_view"
+        android:id="@+id/randomMoveButton"
+        android:layout_gravity="right"
+        android:layout_alignTop="@+id/musclegroupTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/exerciseExpandableListView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/muscleGroupSpinner" />
+
+</RelativeLayout>

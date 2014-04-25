@@ -1,8 +1,13 @@
 package com.zmo.treeniapp;
 
-import android.support.v7.app.ActionBarActivity;
+import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
+import android.os.Build;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,18 +19,17 @@ import android.widget.ExpandableListView;
 import android.widget.Spinner;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
-    private final static String SELECTED_MUSCLE_GROUP = "Rintalihakset";
+    private TabsPagerAdapter tabsPagerAdapter;
+    private ViewPager viewPager;
+    private ActionBar actionBar;
 
-    private ExerciseMovementHolder exerciseMovementHolder;
+    private String[] tabs = { "My Results", "Calorie Counter"};
 
-    private ExpandableListAdapter expandableListAdapter;
 
-    private Spinner muscleGroupSpinner;
-    private Button randomButton;
-    private ExpandableListView expandableListView;
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,69 +40,49 @@ public class MainActivity extends ActionBarActivity {
         } else {
 
         }
-        // assign values to the view element variables
-        muscleGroupSpinner = (Spinner) findViewById(R.id.muscleGroupSpinner);
-        randomButton = (Button) findViewById(R.id.randomMoveButton);
-        expandableListView = (ExpandableListView) findViewById(R.id.exerciseExpandableListView);
 
-        // populate the listView
-        exerciseMovementHolder = new ExerciseMovementHolder();
-        expandableListAdapter = new ExpandableListAdapter(this, getApplicationContext(), exerciseMovementHolder.getAllExercises());
-        expandableListView.setAdapter(expandableListAdapter);
+        tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        actionBar = getActionBar();
 
-        // call methods to add listeners
-        addItemSelectedListenerToSpinner();
-        addButtonListeners();
-    }
+        viewPager.setAdapter(tabsPagerAdapter);
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-    private void addButtonListeners() {
-        randomButton.setOnClickListener(new Button.OnClickListener(){
+        for (String tabName : tabs) {
+            actionBar.addTab(actionBar.newTab().setText(tabName).setTabListener(this));
+        }
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
-            public void onClick(View view) {
+            public void onPageSelected(int position) {
+                // on changing the page
+                // make respected tab selected
+                actionBar.setSelectedNavigationItem(position);
+            }
 
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
             }
         });
     }
 
-    private void addItemSelectedListenerToSpinner() {
-        muscleGroupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                //Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_SHORT).show();
-                Integer i = (int) (long) id;
-                switch (i) {
-                    case 0:
-                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getAllExercises());
-                        break;
-                    case 1:
-                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getChestExercises());
-                        break;
-                    case 2:
-                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getShoulderExercises());
-                        break;
-                    case 3:
-                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getBicepExercises());
-                        break;
-                    case 4:
-                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getTricepExercises());
-                        break;
-                    case 5:
-                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getBackExercises());
-                        break;
-                    case 6:
-                        expandableListAdapter = new ExpandableListAdapter(MainActivity.this, getApplicationContext(), exerciseMovementHolder.getLegExercises());
-                        break;
-                }
-                expandableListView.setAdapter(expandableListAdapter);
-            }
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    }
 
-        });
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
     }
 
     @Override

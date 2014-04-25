@@ -76,29 +76,6 @@ public class ExerciseMovementHolder {
         getAllExercises().addAll(abExercises);
 
         r = new Random();
-
-        /*
-        getTricepExercises().put("Dipit", new Exercise("Dipit"));
-        getTricepExercises().put("Ranskalainen punnerrus", new Exercise("Ranskalainen punnerrus"));
-        getTricepExercises().put("Penkki kapealla otteella", new Exercise("Penkki kapealla otteella"));
-        getTricepExercises().put("Taljassa narulla", new Exercise("Taljassa narulla"));
-
-        getBicepExercises().put("Hauiskääntö tangolla", new Exercise("Hauiskääntö tangolla"));
-        getBicepExercises().put("Vasarakäännöt käsipainoilla", new Exercise("Vasarakäännöt käsipainoilla"));
-        getBicepExercises().put("21:t tangolla", new Exercise("21:t tangolla"));
-        getBicepExercises().put("Taljassa narulla", new Exercise("Taljassa narulla"));
-
-        getBackExercises().put("Soutu tangolla", new Exercise("Soutu tangolla"));
-        getBackExercises().put("Soutu käsipainolla", new Exercise("Soutu käsipainolla"));
-        getBackExercises().put("Leuanveto myötäotteella", new Exercise("Leuanveto myötäotteella"));
-        getBackExercises().put("Ylätalja", new Exercise("Ylätalja"));
-        getBackExercises().put("Alatalja", new Exercise("Alatalja"));
-
-        getAbExercises().put("Dragon flag", new Exercise("Dragon flag"));
-        getAbExercises().put("Windshield wipers", new Exercise("Windshield wipers"));
-        getAbExercises().put("Pyöräilijä", new Exercise("Pyöräilijä"));
-        getAbExercises().put("Voimapyörä", new Exercise("Voimapyörä"));
-*/
     }
 
     public Exercise getRandomChestExercise() {
